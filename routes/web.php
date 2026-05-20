@@ -11,6 +11,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/screenshot/{role}/{view?}', function ($role, $view = 'dashboard') {
+    $user = new \App\Models\User();
+    $user->name = 'Budi (' . ucfirst($role) . ')';
+    $user->role = $role;
+    \Illuminate\Support\Facades\Auth::setUser($user);
+    
+    if ($view === 'dashboard') {
+        return view('dashboard');
+    }
+    
+    $viewPath = $role . '.' . $view;
+    if (view()->exists($viewPath)) {
+        return view($viewPath);
+    }
+    
+    return "View $viewPath not found";
+});
+
 // Redirect /dashboard based on role
 Route::get('/dashboard', function () {
     $role = auth()->user()->role;
