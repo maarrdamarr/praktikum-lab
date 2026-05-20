@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>EUCASE - Modern Laboratory Management System</title>
+    <title>PCM-Lab - Modern Laboratory Management System</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -14,9 +14,9 @@
     <nav class="h-24 flex items-center justify-between px-12 border-b border-gray-100">
         <div class="flex items-center gap-4">
             <div class="w-10 h-10 overflow-hidden rounded-lg shadow-sm">
-                <img src="{{ asset('assets/logo/eucase-logo.png') }}" alt="EUCASE" class="w-full h-full object-cover">
+                <img src="{{ asset('assets/logo/eucase-logo.png') }}" alt="PCM-Lab" class="w-full h-full object-cover">
             </div>
-            <span class="text-xl font-black tracking-tighter text-blue-600">EUCASE</span>
+            <span class="text-xl font-black tracking-tighter text-blue-600">PCM-Lab</span>
         </div>
         <div class="flex items-center gap-8">
             @if (Route::has('login'))
@@ -59,7 +59,7 @@
     </section>
 
     <footer class="py-12 border-t border-gray-100 text-center text-slate-400 text-sm">
-        &copy; 2026 EUCASE Ecosystem. All rights reserved.
+        &copy; 2026 PCM-Lab Ecosystem. All rights reserved.
     </footer>
 </body>
 </html>

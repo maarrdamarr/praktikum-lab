@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Nexus Lab | Daftar Akun</title>
+    <title>PCM Lab | Daftar Akun</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -44,7 +44,7 @@
         <div class="flex flex-col items-center mb-8">
             <a href="/" class="flex items-center gap-3 mb-4 group">
                 <div class="w-12 h-12 bg-gradient-to-tr from-cyan-500 to-violet-500 rounded-2xl flex items-center justify-center font-bold text-white text-xl shadow-2xl group-hover:scale-110 transition-transform">N</div>
-                <span class="text-3xl font-extrabold text-white tracking-tighter italic">NEXUS<span class="text-cyan-500">LAB</span></span>
+                <span class="text-3xl font-extrabold text-white tracking-tighter italic">PCM <span class="text-cyan-500">Lab</span></span>
             </a>
             <p class="text-slate-500 font-medium text-center px-8">Bergabunglah dengan ekosistem digital laboratorium modern</p>
         </div>
@@ -61,7 +61,7 @@
                     <label for="name" class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-4">Nama Lengkap</label>
                     <input id="name" type="text" name="name" value="{{ old('name') }}" required autofocus autocomplete="name" 
                         class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-violet-500/50 transition-all"
-                        placeholder="John Doe">
+                        placeholder="Nama Lengkap Anda">
                     @if($errors->has('name'))
                         <p class="text-xs text-rose-500 mt-1 ml-4">{{ $errors->first('name') }}</p>
                     @endif
@@ -72,7 +72,7 @@
                     <label for="email" class="text-xs font-bold text-slate-500 uppercase tracking-widest ml-4">Email Address</label>
                     <input id="email" type="email" name="email" value="{{ old('email') }}" required autocomplete="username" 
                         class="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-violet-500/50 transition-all"
-                        placeholder="nama@email.com">
+                        placeholder="nama@gmail.com">
                     @if($errors->has('email'))
                         <p class="text-xs text-rose-500 mt-1 ml-4">{{ $errors->first('email') }}</p>
                     @endif
@@ -113,7 +113,7 @@
 
         <!-- Footer -->
         <div class="mt-8 text-center text-[10px] text-slate-600 font-bold uppercase tracking-[0.3em]">
-            &copy; {{ date('Y') }} Nexus Laboratory Management System
+            &copy; {{ date('Y') }} PCM Lab Management System
         </div>
     </div>
 

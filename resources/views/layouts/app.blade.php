@@ -10,7 +10,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>{{ config('app.name', 'Nexus Lab') }}</title>
+    <title>{{ config('app.name', 'PCM Lab') }}</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,7 +58,9 @@
     <style>
         [x-cloak] { display: none !important; }
         @php
-            $role = auth()->user()->role;
+            $user = auth()->user();
+            $role = isset($user->role) ? $user->role : 'praktikan';
+            $userName = isset($user->name) ? $user->name : '';
             $accent = [
                 'praktikan' => 'blue',
                 'asisten' => 'emerald',
@@ -111,14 +113,13 @@
                     <div class="w-12 h-12 flex items-center justify-center overflow-hidden rounded-xl shadow-md border border-gray-100 dark:border-slate-700 bg-gray-50">
                         <img src="{{ asset('assets/logo/eucase-logo.png') }}" alt="EUCASE" class="w-full h-full object-cover">
                     </div>
-                    <span x-show="!sidebarCollapsed" x-transition.opacity.duration.300 class="text-2xl font-black tracking-tighter" style="color: var(--accent-color)">EUCASE</span>
+                    <span x-show="!sidebarCollapsed" x-transition.opacity.duration.300 class="text-2xl font-black tracking-tighter" style="color: var(--accent-color)">PCM Lab</span>
                 </a>
             </div>
 
             <nav class="flex-1 overflow-y-auto p-6 space-y-2">
                 @php
                     $currentRoute = Route::currentRouteName();
-                    $role = auth()->user()->role;
                 @endphp
 
                 <div class="space-y-1">
@@ -210,7 +211,7 @@
                     <button @click="mobileMenuOpen = true" class="lg:hidden p-2 text-slate-600 dark:text-slate-400">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
-                    <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest truncate max-w-[150px] md:max-w-none">Panel {{ ucfirst($role) }} | EUCASE</h2>
+                    <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest truncate max-w-[150px] md:max-w-none">Panel {{ ucfirst($role) }} | PCM Lab</h2>
                 </div>
                 <div class="flex items-center gap-6">
                     <!-- Theme Selector -->
@@ -246,8 +247,8 @@
                     </div>
 
                     <div class="flex items-center gap-3 border-l border-gray-200 dark:border-slate-800 pl-6">
-                        <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white shadow-sm" style="background-color: var(--accent-color)">{{ substr(auth()->user()->name, 0, 1) }}</div>
-                        <span class="font-bold hidden md:block">{{ auth()->user()->name }}</span>
+                        <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white shadow-sm" style="background-color: var(--accent-color)">{{ $userName ? substr($userName, 0, 1) : '' }}</div>
+                        <span class="font-bold hidden md:block">{{ $userName }}</span>
                     </div>
                 </div>
             </header>

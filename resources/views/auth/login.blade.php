@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Login | EUCASE</title>
+    <title>Login | PCM Lab</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
@@ -19,7 +19,7 @@
                     <div class="w-10 h-10 overflow-hidden rounded-lg shadow-sm">
                         <img src="{{ asset('assets/logo/eucase-logo.png') }}" alt="EUCASE" class="w-full h-full object-cover">
                     </div>
-                    <span class="text-xl font-black tracking-tighter text-blue-600">EUCASE</span>
+                    <span class="text-xl font-black tracking-tighter text-blue-600">PCM Lab</span>
                 </a>
                 <h1 class="text-4xl font-black tracking-tighter text-slate-900 mb-2">Selamat Datang</h1>
                 <p class="text-slate-500 font-medium">Silakan masuk untuk melanjutkan ke dashboard.</p>
@@ -69,7 +69,7 @@
             </form>
 
             <footer class="absolute bottom-12 left-12 lg:left-24 xl:left-32 text-[10px] font-bold text-slate-300 uppercase tracking-widest">
-                &copy; 2026 EUCASE Ecosystem.
+                &copy; 2026 PCM Lab Ecosystem.
             </footer>
         </div>
 
@@ -78,7 +78,7 @@
             <img src="{{ asset('assets/images/login-side.png') }}" alt="Laboratory" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
             <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
             <div class="absolute bottom-24 left-24 right-24 text-white">
-                <h2 class="text-5xl font-black tracking-tighter mb-6 leading-tight">Elevate Your Research <br> with EUCASE.</h2>
+                <h2 class="text-5xl font-black tracking-tighter mb-6 leading-tight">Elevate Your Research <br> with PCM Lab.</h2>
                 <div class="flex gap-4">
                     <div class="h-1 w-12 bg-white rounded-full"></div>
                     <p class="text-blue-100 font-medium max-w-sm">Sistem manajemen laboratorium terintegrasi untuk efisiensi, akurasi, dan kolaborasi tanpa batas.</p>

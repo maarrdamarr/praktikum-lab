@@ -1,13 +1,14 @@
 <x-app-layout>
     @php
-        $role = auth()->user()->role;
-        $name = explode(' ', auth()->user()->name)[0];
+        $user = auth()->user();
+        $role = isset($user->role) ? $user->role : 'praktikan';
+        $name = isset($user->name) ? explode(' ', $user->name)[0] : '';
     @endphp
 
     <div class="mb-12 flex justify-between items-end">
         <div>
             <h2 class="text-4xl font-black tracking-tighter mb-2">Halo, {{ $name }}!</h2>
-            <p class="text-slate-500 font-medium">Sistem Nexus Lab siap mendukung produktivitas Anda hari ini.</p>
+            <p class="text-slate-500 font-medium">Sistem PCM Lab siap mendukung produktivitas Anda hari ini.</p>
         </div>
         <div class="hidden md:flex gap-4 p-2 bg-gray-100 dark:bg-slate-800 rounded-2xl">
             <div class="px-6 py-3 bg-white dark:bg-slate-900 rounded-xl shadow-sm">
@@ -123,14 +124,22 @@
                 <div class="absolute -bottom-12 -right-12 w-48 h-48 blur-3xl rounded-full" style="background-color: rgba(var(--accent-rgb), 0.1)"></div>
                 <h3 class="text-lg font-bold mb-6 text-slate-900 dark:text-white">Progres Capaian</h3>
                 <div class="space-y-6 relative z-10">
-                    @foreach(['Teori' => 90, 'Praktek' => 65, 'Laporan' => 80] as $label => $val)
+                    @php
+                        $progressItems = [
+                            'Teori' => ['value' => 90, 'class' => 'w-[90%]'],
+                            'Praktek' => ['value' => 65, 'class' => 'w-[65%]'],
+                            'Laporan' => ['value' => 80, 'class' => 'w-[80%]'],
+                        ];
+                    @endphp
+
+                    @foreach($progressItems as $label => $item)
                         <div class="space-y-2">
                             <div class="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-400">
                                 <span>{{ $label }}</span>
-                                <span>{{ $val }}%</span>
+                                <span>{{ $item['value'] }}%</span>
                             </div>
                             <div class="w-full h-1.5 bg-gray-100 dark:bg-slate-800 rounded-full overflow-hidden">
-                                <div class="h-full transition-all duration-1000" style="width: {{ $val }}%; background-color: var(--accent-color)"></div>
+                                <div class="h-full transition-all duration-1000 {{ $item['class'] }}" style="background-color: var(--accent-color);"></div>
                             </div>
                         </div>
                     @endforeach
