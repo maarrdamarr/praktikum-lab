@@ -10,10 +10,9 @@
         body { font-family: 'Inter', sans-serif; }
     </style>
 </head>
-<body class="bg-white text-slate-900 antialiased overflow-hidden">
-    <div class="flex h-screen">
-        <!-- Left Side: Form -->
-        <div class="w-full lg:w-[45%] flex flex-col justify-center px-12 lg:px-24 xl:px-32 bg-white relative z-10">
+<body class="bg-white text-slate-900 antialiased">
+    <div class="min-h-screen flex items-center justify-center px-4 py-12">
+        <div class="w-full max-w-md relative">
             <div class="mb-12">
                 <a href="/" class="flex items-center gap-4 mb-8">
                     <div class="w-10 h-10 overflow-hidden rounded-lg shadow-sm">
@@ -68,22 +67,9 @@
                 </p>
             </form>
 
-            <footer class="absolute bottom-12 left-12 lg:left-24 xl:left-32 text-[10px] font-bold text-slate-300 uppercase tracking-widest">
+            <footer class="mt-10 text-center text-[10px] font-bold text-slate-300 uppercase tracking-widest">
                 &copy; 2026 PCM Lab Ecosystem.
             </footer>
-        </div>
-
-        <!-- Right Side: Photo -->
-        <div class="hidden lg:block lg:w-[55%] relative overflow-hidden bg-blue-600">
-            <img src="{{ asset('assets/images/login-side.png') }}" alt="Laboratory" class="w-full h-full object-cover opacity-80 mix-blend-overlay">
-            <div class="absolute inset-0 bg-gradient-to-t from-blue-900/80 to-transparent"></div>
-            <div class="absolute bottom-24 left-24 right-24 text-white">
-                <h2 class="text-5xl font-black tracking-tighter mb-6 leading-tight">Elevate Your Research <br> with PCM Lab.</h2>
-                <div class="flex gap-4">
-                    <div class="h-1 w-12 bg-white rounded-full"></div>
-                    <p class="text-blue-100 font-medium max-w-sm">Sistem manajemen laboratorium terintegrasi untuk efisiensi, akurasi, dan kolaborasi tanpa batas.</p>
-                </div>
-            </div>
         </div>
     </div>
 </body>

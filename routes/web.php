@@ -95,6 +95,8 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', [DosenController::class, 'index'])->name('dashboard');
         Route::get('/buat-soal', [DosenController::class, 'buatSoal'])->name('buat-soal');
         Route::post('/buat-soal', [DosenController::class, 'storeSoal'])->name('buat-soal.store');
+        Route::put('/buat-soal/{id}', [DosenController::class, 'updateSoal'])->name('buat-soal.update');
+        Route::delete('/buat-soal/{id}', [DosenController::class, 'destroySoal'])->name('buat-soal.delete');
         Route::post('/buat-soal/import', [DosenController::class, 'importSoal'])->name('buat-soal.import');
         Route::get('/buat-soal/export', [DosenController::class, 'exportSoal'])->name('buat-soal.export');
         Route::get('/rekap-nilai', [DosenController::class, 'rekapNilai'])->name('rekap-nilai');
