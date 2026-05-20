@@ -5,22 +5,22 @@
         $name = isset($user->name) ? explode(' ', $user->name)[0] : '';
     @endphp
 
-    <div class="mb-12 flex justify-between items-end">
+    <div class="mb-12 flex justify-between items-end flex-wrap gap-6">
         <div>
-            <h2 class="text-4xl font-black tracking-tighter mb-2">Halo, {{ $name }}!</h2>
-            <p class="text-slate-500 font-medium">Sistem PCM Lab siap mendukung produktivitas Anda hari ini.</p>
+            <h2 class="text-4xl font-black tracking-tighter mb-2 uppercase">Halo, {{ $name }}!</h2>
+            <p class="text-slate-600 dark:text-slate-400 font-bold">Sistem PCM Lab siap mendukung produktivitas Anda hari ini.</p>
         </div>
-        <div class="hidden md:flex gap-4 p-2 bg-gray-100 dark:bg-slate-800 rounded-2xl">
-            <div class="px-6 py-3 bg-white dark:bg-slate-900 rounded-xl shadow-sm">
-                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Status Server</p>
+        <div class="hidden md:flex gap-4 p-3 bg-white dark:bg-slate-800 border-[3px] border-slate-900 dark:border-white rounded-xl shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff]">
+            <div class="px-6 py-3 bg-white dark:bg-slate-900 border-[3px] border-slate-900 dark:border-white rounded-xl shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff]">
+                <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Status Server</p>
                 <div class="flex items-center gap-2">
-                    <span class="w-2 h-2 bg-emerald-500 rounded-full animate-pulse"></span>
-                    <span class="text-xs font-bold">Optimal</span>
+                    <span class="w-3.5 h-3.5 bg-emerald-500 border-2 border-slate-900 rounded-full animate-pulse"></span>
+                    <span class="text-xs font-black uppercase">Optimal</span>
                 </div>
             </div>
-            <div class="px-6 py-3">
-                <p class="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1">Waktu Sistem</p>
-                <span class="text-xs font-bold">{{ date('H:i') }} WIB</span>
+            <div class="px-6 py-3 flex flex-col justify-center">
+                <p class="text-[10px] font-black text-slate-500 uppercase tracking-widest mb-1">Waktu Sistem</p>
+                <span class="text-xs font-black uppercase">{{ date('H:i') }} WIB</span>
             </div>
         </div>
     </div>
@@ -54,31 +54,31 @@
         <!-- Main Activity Area -->
         <div class="lg:col-span-2 space-y-12">
             @if($role == 'praktikan')
-                <div class="p-10 rounded-[3rem] bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 shadow-sm relative overflow-hidden">
+                <div class="p-10 neu-card relative overflow-hidden">
                     <div class="absolute top-0 right-0 p-8">
-                        <span class="px-4 py-2 text-[10px] font-black uppercase tracking-widest rounded-xl" style="background-color: rgba(var(--accent-rgb), 0.1); color: var(--accent-color)">Next Session</span>
+                        <span class="px-4 py-2 border-[3px] border-slate-900 dark:border-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff]" style="background-color: var(--accent-color); color: #ffffff">Next Session</span>
                     </div>
-                    <h3 class="text-xl font-bold mb-8">Jadwal Terdekat</h3>
+                    <h3 class="text-xl font-black uppercase tracking-widest mb-8 text-slate-900 dark:text-white">Jadwal Terdekat</h3>
                     <div class="flex flex-col md:flex-row gap-8 items-center">
-                        <div class="w-32 h-32 rounded-3xl flex flex-col items-center justify-center text-white shadow-xl shadow-blue-600/20" style="background-color: var(--accent-color)">
+                        <div class="w-32 h-32 rounded-xl flex flex-col items-center justify-center text-white border-[3px] border-slate-900 dark:border-white shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff]" style="background-color: var(--accent-color)">
                             <span class="text-[10px] font-black uppercase tracking-widest opacity-80">Kamis</span>
                             <span class="text-4xl font-black">14</span>
                             <span class="text-[10px] font-black uppercase tracking-widest opacity-80">Mei</span>
                         </div>
                         <div class="flex-1 space-y-2">
                             <h4 class="text-2xl font-black text-slate-900 dark:text-white">Laboratorium Kimia Dasar</h4>
-                            <p class="text-slate-500 font-medium italic">"Analisis Kuantitatif Senyawa Organik"</p>
+                            <p class="text-slate-600 dark:text-slate-400 font-bold italic">"Analisis Kuantitatif Senyawa Organik"</p>
                             <div class="flex gap-4 pt-4">
-                                <span class="px-4 py-2 bg-gray-50 dark:bg-slate-800 rounded-xl text-[10px] font-bold text-slate-500 uppercase tracking-widest">08:00 - 12:00</span>
-                                <span class="px-4 py-2 bg-gray-50 dark:bg-slate-800 rounded-xl text-[10px] font-bold text-slate-500 uppercase tracking-widest">Meja 04</span>
+                                <span class="px-4 py-2 bg-gray-50 dark:bg-slate-800 border-[3px] border-slate-900 dark:border-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff]">08:00 - 12:00</span>
+                                <span class="px-4 py-2 bg-gray-50 dark:bg-slate-800 border-[3px] border-slate-900 dark:border-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff]">Meja 04</span>
                             </div>
                         </div>
                     </div>
                 </div>
             @endif
 
-            <div class="p-10 rounded-[3rem] bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 shadow-sm">
-                <h3 class="text-xl font-bold mb-8">Aktivitas & Log</h3>
+            <div class="p-10 neu-card">
+                <h3 class="text-xl font-black uppercase tracking-widest mb-8 text-slate-900 dark:text-white">Aktivitas & Log</h3>
                 <div class="space-y-6">
                     @php
                         $logs = [
@@ -106,11 +106,11 @@
                     @endphp
 
                     @foreach($logs as $log)
-                        <div class="flex items-center gap-6 p-6 rounded-3xl border border-gray-50 dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800/50 transition-all">
-                            <div class="w-3 h-3 rounded-full {{ $log[2] == 'success' ? 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]' : ($log[2] == 'warning' ? 'bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]' : 'bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]') }}"></div>
+                        <div class="flex items-center gap-6 p-6 rounded-xl border-[3px] border-slate-900 dark:border-white bg-gray-50 dark:bg-slate-800/50 shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] dark:hover:shadow-[6px_6px_0px_#fff] transition-all">
+                            <div class="w-4 h-4 rounded-full border-2 border-slate-900 dark:border-white {{ $log[2] == 'success' ? 'bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)]' : ($log[2] == 'warning' ? 'bg-amber-500 shadow-[0_0_10px_rgba(245,158,11,0.5)]' : 'bg-blue-500 shadow-[0_0_10px_rgba(59,130,246,0.5)]') }}"></div>
                             <div class="flex-1">
-                                <p class="text-sm font-bold text-slate-900 dark:text-white">{{ $log[0] }}</p>
-                                <p class="text-[10px] text-slate-400 font-bold uppercase tracking-widest mt-1">{{ $log[1] }}</p>
+                                <p class="text-sm font-black text-slate-900 dark:text-white">{{ $log[0] }}</p>
+                                <p class="text-[10px] text-slate-500 dark:text-slate-400 font-black uppercase tracking-widest mt-1">{{ $log[1] }}</p>
                             </div>
                         </div>
                     @endforeach
@@ -120,9 +120,9 @@
 
         <!-- Sidebar Activity -->
         <div class="space-y-12">
-            <div class="p-8 rounded-[2.5rem] bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 shadow-sm relative overflow-hidden">
+            <div class="p-8 neu-card relative overflow-hidden">
                 <div class="absolute -bottom-12 -right-12 w-48 h-48 blur-3xl rounded-full" style="background-color: rgba(var(--accent-rgb), 0.1)"></div>
-                <h3 class="text-lg font-bold mb-6 text-slate-900 dark:text-white">Progres Capaian</h3>
+                <h3 class="text-lg font-black uppercase tracking-widest mb-6 text-slate-900 dark:text-white">Progres Capaian</h3>
                 <div class="space-y-6 relative z-10">
                     @php
                         $progressItems = [
@@ -134,25 +134,25 @@
 
                     @foreach($progressItems as $label => $item)
                         <div class="space-y-2">
-                            <div class="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-400">
+                            <div class="flex justify-between text-[10px] font-black uppercase tracking-widest text-slate-500 dark:text-slate-400">
                                 <span>{{ $label }}</span>
                                 <span>{{ $item['value'] }}%</span>
                             </div>
-                            <div class="w-full h-1.5 bg-gray-100 dark:bg-slate-800 rounded-full overflow-hidden">
+                            <div class="w-full h-4 bg-gray-100 dark:bg-slate-800 border-[3px] border-slate-900 dark:border-white rounded-lg overflow-hidden">
                                 <div class="h-full transition-all duration-1000 {{ $item['class'] }}" style="background-color: var(--accent-color);"></div>
                             </div>
                         </div>
                     @endforeach
                 </div>
-                <button class="w-full mt-10 py-4 bg-gray-50 dark:bg-slate-800 text-slate-900 dark:text-white rounded-2xl text-[10px] font-black uppercase tracking-widest hover:text-white transition-all" :style="'--hover-bg: var(--accent-color)'" onmouseover="this.style.backgroundColor='var(--accent-color)'" onmouseout="this.style.backgroundColor=''">Detail Kompetensi</button>
+                <button class="w-full mt-10 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white rounded-xl text-[10px] font-black uppercase tracking-widest hover:bg-[var(--accent-color)] dark:hover:bg-[var(--accent-color)] hover:text-white transition-all neu-btn">Detail Kompetensi</button>
             </div>
 
-            <div class="p-8 rounded-[2.5rem] bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 shadow-sm">
-                <h3 class="text-lg font-bold mb-6">Butuh Bantuan?</h3>
-                <p class="text-xs text-slate-500 leading-relaxed mb-6">Hubungi administrator laboratorium jika Anda mengalami kendala teknis atau memiliki pertanyaan terkait jadwal.</p>
-                <div class="space-y-3">
-                    <a href="#" class="block p-4 rounded-2xl border border-gray-50 dark:border-slate-800 hover:bg-gray-50 dark:hover:bg-slate-800 text-center text-[10px] font-black uppercase tracking-widest text-slate-600 dark:text-slate-400">Pusat Bantuan</a>
-                    <a href="#" class="block p-4 rounded-2xl text-center text-[10px] font-black uppercase tracking-widest transition-all" style="background-color: rgba(var(--accent-rgb), 0.1); color: var(--accent-color)">Kirim Tiket</a>
+            <div class="p-8 neu-card">
+                <h3 class="text-lg font-black uppercase tracking-widest mb-6 text-slate-900 dark:text-white">Butuh Bantuan?</h3>
+                <p class="text-xs text-slate-600 dark:text-slate-400 font-bold leading-relaxed mb-6">Hubungi administrator laboratorium jika Anda mengalami kendala teknis atau memiliki pertanyaan terkait jadwal.</p>
+                <div class="space-y-4">
+                    <a href="#" class="block p-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-center text-[10px] font-black uppercase tracking-widest neu-btn">Pusat Bantuan</a>
+                    <a href="#" class="block p-4 text-center text-[10px] font-black uppercase tracking-widest neu-btn text-white" style="background-color: var(--accent-color)">Kirim Tiket</a>
                 </div>
             </div>
         </div>

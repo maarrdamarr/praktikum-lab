@@ -1,11 +1,11 @@
 <x-subpage-layout title="Sesi Pre-test Aktif">
     <div class="space-y-10">
-        <div class="p-8 bg-blue-50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800 rounded-3xl">
-            <div class="flex justify-between items-center mb-6">
-                <h3 class="text-lg font-bold text-blue-900 dark:text-blue-100">Modul 04: Spektroskopi UV-Vis</h3>
-                <div class="px-4 py-2 bg-blue-600 text-white rounded-xl text-xs font-bold animate-pulse">09:54 Sisa Waktu</div>
+        <div class="p-8 bg-blue-100 dark:bg-blue-950 border-[3px] border-slate-900 dark:border-white rounded-xl shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff]">
+            <div class="flex justify-between items-center flex-wrap gap-4 mb-6">
+                <h3 class="text-lg font-black uppercase tracking-wider text-slate-900 dark:text-white">Modul 04: Spektroskopi UV-Vis</h3>
+                <div class="px-4 py-2 bg-rose-450 text-slate-900 border-[3px] border-slate-900 dark:border-white rounded-xl text-xs font-black uppercase tracking-widest shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_#fff] animate-pulse">09:54 Sisa Waktu</div>
             </div>
-            <p class="text-sm text-blue-700 dark:text-blue-300 leading-relaxed">Jawablah pertanyaan berikut dengan teliti. Anda hanya memiliki satu kesempatan untuk mengirimkan jawaban.</p>
+            <p class="text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed">Jawablah pertanyaan berikut dengan teliti. Anda hanya memiliki satu kesempatan untuk mengirimkan jawaban.</p>
         </div>
 
         <form action="{{ route('praktikan.pre-test.store') }}" method="POST" class="space-y-12">
@@ -15,17 +15,17 @@
                 'Sebutkan komponen utama dari alat spektrofotometer yang Anda gunakan.',
                 'Mengapa larutan blanko diperlukan dalam pengukuran absorbansi?'
             ] as $i => $q)
-                <div class="space-y-4 p-6 border-b border-gray-100 dark:border-slate-800 last:border-0">
-                    <p class="font-bold text-slate-900 dark:text-white flex gap-4">
-                        <span class="text-blue-600">{{ $i + 1 }}.</span>
+                <div class="space-y-4 p-6 border-b-[3px] border-slate-900 dark:border-white last:border-0">
+                    <p class="font-black text-slate-900 dark:text-white flex gap-4 uppercase tracking-wide">
+                        <span class="text-[var(--accent-color)]">{{ $i + 1 }}.</span>
                         {{ $q }}
                     </p>
-                    <textarea rows="3" class="w-full bg-gray-50 dark:bg-slate-800 border border-gray-200 dark:border-slate-700 rounded-2xl p-6 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all" placeholder="Ketik jawaban Anda di sini..."></textarea>
+                    <textarea rows="3" class="w-full neu-input p-6 text-sm font-black" placeholder="Ketik jawaban Anda di sini..."></textarea>
                 </div>
             @endforeach
 
             <div class="pt-6">
-                <button type="submit" class="w-full py-5 bg-blue-600 text-white font-extrabold rounded-2xl shadow-xl shadow-blue-600/20 hover:bg-blue-700 transition-all uppercase tracking-widest">
+                <button type="submit" class="w-full py-5 bg-[var(--accent-color)] text-white font-black rounded-xl uppercase tracking-widest neu-btn">
                     Kirim Jawaban Pre-test
                 </button>
             </div>

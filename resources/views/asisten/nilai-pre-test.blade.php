@@ -1,30 +1,30 @@
 <x-subpage-layout title="Penilaian Pre-test">
     <div class="space-y-6">
         @foreach(['Ahmad Fauzi', 'Budi Santoso', 'Citra Lestari'] as $name)
-            <div class="p-8 bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-3xl shadow-sm space-y-6">
-                <div class="flex justify-between items-center">
+            <div class="p-8 neu-card space-y-6">
+                <div class="flex justify-between items-center flex-wrap gap-4">
                     <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 rounded-full bg-blue-50 dark:bg-blue-900/20 flex items-center justify-center font-bold text-blue-600">
+                        <div class="w-12 h-12 border-[3px] border-slate-900 dark:border-white rounded-xl bg-blue-400 flex items-center justify-center font-black text-slate-900 shadow-[2px_2px_0px_#000]">
                             {{ substr($name, 0, 1) }}
                         </div>
                         <div>
-                            <h4 class="font-bold text-slate-900 dark:text-white">{{ $name }}</h4>
-                            <p class="text-[10px] text-slate-500 font-bold uppercase tracking-widest">Modul: Spektroskopi UV-Vis</p>
+                            <h4 class="font-black text-slate-900 dark:text-white uppercase">{{ $name }}</h4>
+                            <p class="text-[10px] text-slate-500 dark:text-slate-400 font-black uppercase tracking-widest">Modul: Spektroskopi UV-Vis</p>
                         </div>
                     </div>
-                    <div class="px-4 py-2 bg-amber-50 dark:bg-amber-900/20 text-amber-600 rounded-xl text-[10px] font-black uppercase tracking-widest">Belum Dinilai</div>
+                    <div class="px-4 py-2 border-2 border-slate-900 dark:border-white bg-amber-400 text-slate-900 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-[2px_2px_0px_#000]">Belum Dinilai</div>
                 </div>
 
-                <div class="p-6 bg-gray-50 dark:bg-slate-800 rounded-2xl italic text-sm text-slate-600 dark:text-slate-400 leading-relaxed border-l-4 border-blue-500">
+                <div class="p-6 bg-gray-50 dark:bg-slate-800 rounded-xl italic text-sm text-slate-650 dark:text-slate-300 leading-relaxed border-[3px] border-slate-900 dark:border-white border-l-[6px]">
                     "Hukum Lambert-Beer menyatakan bahwa absorbansi suatu larutan berbanding lurus dengan konsentrasi dan ketebalan medium..."
                 </div>
 
                 <form action="{{ route('asisten.nilai-pre-test.store') }}" method="POST" class="flex items-center gap-4">
                     @csrf
                     <div class="flex-1">
-                        <input type="number" name="grade" placeholder="Masukkan Nilai (0-100)" class="w-full bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none">
+                        <input type="number" name="grade" placeholder="Masukkan Nilai (0-100)" class="w-full neu-input px-4 py-3 text-sm font-black">
                     </div>
-                    <button type="submit" class="px-8 py-3 bg-blue-600 text-white text-xs font-bold uppercase tracking-widest rounded-xl hover:bg-blue-700 transition-all">Simpan</button>
+                    <button type="submit" class="px-8 py-3 bg-[var(--accent-color)] text-white text-xs font-black uppercase tracking-widest rounded-xl neu-btn">Simpan</button>
                 </form>
             </div>
         @endforeach

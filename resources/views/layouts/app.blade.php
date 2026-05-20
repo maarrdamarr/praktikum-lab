@@ -74,15 +74,103 @@
                 'admin' => '#e11d48'
             ][$role] ?? '#2563eb';
         @endphp
-        .sidebar-active { background-color: rgba(var(--accent-rgb), 0.1); color: var(--accent-color); font-weight: 700; }
-        .sidebar-active svg { color: var(--accent-color); }
-        .dark .sidebar-active { background-color: rgba(var(--accent-rgb), 0.2); color: var(--accent-light); }
-        .dark .sidebar-active svg { color: var(--accent-light); }
-        
         :root {
             --accent-color: {{ $accentHex }};
             --accent-rgb: {{ $accent == 'blue' ? '37, 99, 235' : ($accent == 'emerald' ? '5, 150, 105' : ($accent == 'amber' ? '245, 158, 11' : '225, 29, 72')) }};
             --accent-light: {{ $accent == 'blue' ? '#60a5fa' : ($accent == 'emerald' ? '#34d399' : ($accent == 'amber' ? '#fbbf24' : '#fb7185')) }};
+        }
+
+        .sidebar-active {
+            background-color: var(--accent-color) !important;
+            color: #ffffff !important;
+            border: 3px solid #0f172a !important;
+            box-shadow: 3px 3px 0px 0px #0f172a !important;
+            transform: translate(-2px, -2px);
+        }
+        .dark .sidebar-active {
+            background-color: var(--accent-color) !important;
+            color: #ffffff !important;
+            border: 3px solid #ffffff !important;
+            box-shadow: 3px 3px 0px 0px #ffffff !important;
+        }
+        .sidebar-active svg {
+            color: #ffffff !important;
+        }
+
+        /* Neubrutalism Card Styling */
+        .neu-card {
+            border: 3px solid #0f172a !important;
+            box-shadow: 6px 6px 0px 0px #0f172a !important;
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            transition: all 0.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+            border-radius: 12px !important;
+        }
+        .dark .neu-card {
+            border: 3px solid #ffffff !important;
+            box-shadow: 6px 6px 0px 0px #ffffff !important;
+            background-color: #0f172a !important;
+            color: #ffffff !important;
+        }
+        .neu-card-hover:hover {
+            transform: translate(-3px, -3px);
+            box-shadow: 9px 9px 0px 0px #0f172a !important;
+        }
+        .dark .neu-card-hover:hover {
+            box-shadow: 9px 9px 0px 0px #ffffff !important;
+        }
+
+        /* Neubrutalism Button Styling */
+        .neu-btn {
+            border: 3px solid #0f172a !important;
+            box-shadow: 4px 4px 0px 0px #0f172a !important;
+            transition: all 0.1s ease;
+            font-weight: 900 !important;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border-radius: 8px !important;
+        }
+        .dark .neu-btn {
+            border: 3px solid #ffffff !important;
+            box-shadow: 4px 4px 0px 0px #ffffff !important;
+        }
+        .neu-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px #0f172a !important;
+        }
+        .dark .neu-btn:hover {
+            box-shadow: 6px 6px 0px 0px #ffffff !important;
+        }
+        .neu-btn:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px 0px #0f172a !important;
+        }
+        .dark .neu-btn:active {
+            box-shadow: 2px 2px 0px 0px #ffffff !important;
+        }
+
+        /* Neubrutalism Input Styling */
+        .neu-input {
+            border: 3px solid #0f172a !important;
+            box-shadow: 3px 3px 0px 0px #0f172a !important;
+            border-radius: 12px !important;
+            background-color: #ffffff !important;
+            color: #0f172a !important;
+            transition: all 0.1s ease;
+            outline: none !important;
+        }
+        .dark .neu-input {
+            border: 3px solid #ffffff !important;
+            box-shadow: 3px 3px 0px 0px #ffffff !important;
+            background-color: #1e293b !important;
+            color: #ffffff !important;
+        }
+        .neu-input:focus {
+            transform: translate(-1px, -1px);
+            box-shadow: 4px 4px 0px 0px #0f172a !important;
+        }
+        .dark .neu-input:focus {
+            box-shadow: 4px 4px 0px 0px #ffffff !important;
         }
 
         .notification-drop { animation: dropDown 0.5s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards; }
@@ -92,9 +180,9 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased font-sans transition-colors duration-300">
+<body class="bg-[#faf6f0] dark:bg-slate-950 text-slate-900 dark:text-slate-100 antialiased font-sans transition-colors duration-300">
 
-    <div class="flex h-screen overflow-hidden bg-gray-50 dark:bg-slate-950">
+    <div class="flex h-screen overflow-hidden bg-[#faf6f0] dark:bg-slate-950">
         <!-- Sidebar Overlay (Mobile) -->
         <div x-show="mobileMenuOpen" @click="mobileMenuOpen = false" x-cloak class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-[70] lg:hidden"></div>
 
@@ -106,11 +194,11 @@
                 'translate-x-0': mobileMenuOpen,
                 '-translate-x-full': !mobileMenuOpen
             }"
-            class="fixed lg:relative inset-y-0 left-0 bg-white dark:bg-slate-900 border-r border-gray-200 dark:border-slate-800 flex flex-col z-[80] transition-all duration-500 ease-in-out lg:translate-x-0 shadow-2xl lg:shadow-none">
+            class="fixed lg:relative inset-y-0 left-0 bg-white dark:bg-slate-900 border-r-[3px] border-slate-900 dark:border-white flex flex-col z-[80] transition-all duration-500 ease-in-out lg:translate-x-0">
             
-            <div class="p-8 border-b border-gray-100 dark:border-slate-800 flex items-center justify-between overflow-hidden">
+            <div class="p-8 border-b-[3px] border-slate-900 dark:border-white flex items-center justify-between overflow-hidden">
                 <a href="/" class="flex items-center gap-4 shrink-0">
-                    <div class="w-12 h-12 flex items-center justify-center overflow-hidden rounded-xl shadow-md border border-gray-100 dark:border-slate-700 bg-gray-50">
+                    <div class="w-12 h-12 flex items-center justify-center overflow-hidden rounded-xl border-[3px] border-slate-900 dark:border-white bg-white shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff]">
                         <img src="{{ asset('assets/logo/eucase-logo.png') }}" alt="EUCASE" class="w-full h-full object-cover">
                     </div>
                     <span x-show="!sidebarCollapsed" x-transition.opacity.duration.300 class="text-2xl font-black tracking-tighter" style="color: var(--accent-color)">PCM Lab</span>
@@ -159,11 +247,11 @@
                 </div>
             </nav>
 
-            <div class="p-6 border-t border-gray-100 dark:border-slate-800">
+            <div class="p-6 border-t-[3px] border-slate-900 dark:border-white">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-                    <button type="submit" class="flex items-center gap-3 w-full p-3 text-rose-500 font-bold hover:bg-rose-50 dark:hover:bg-rose-900/10 rounded-xl transition-all overflow-hidden">
-                        <svg class="w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    <button type="submit" class="flex items-center gap-3 w-full p-3 text-rose-600 bg-white dark:bg-slate-800 border-[3px] border-slate-900 dark:border-white rounded-xl shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff] font-bold hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] dark:hover:shadow-[4px_4px_0px_#fff] active:translate-x-[1px] active:translate-y-[1px] active:shadow-[2px_2px_0px_#000] dark:active:shadow-[2px_2px_0px_#fff] transition-all overflow-hidden">
+                        <svg class="w-5 h-5 shrink-0 animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
                         <span x-show="!sidebarCollapsed" x-transition.opacity.duration.300>Keluar</span>
                     </button>
                 </form>
@@ -180,8 +268,8 @@
             <!-- Elegant Top Notification -->
             @if(session('success') || session('error'))
                 <div class="fixed top-8 left-1/2 -translate-x-1/2 z-[100] w-full max-w-md px-6 notification-drop">
-                    <div class="bg-white dark:bg-slate-900 border {{ session('success') ? 'border-emerald-500/30' : 'border-rose-500/30' }} shadow-2xl rounded-2xl p-4 flex items-center gap-4 backdrop-blur-xl">
-                        <div class="w-10 h-10 {{ session('success') ? 'bg-emerald-500' : 'bg-rose-500' }} rounded-xl flex items-center justify-center text-white">
+                    <div class="bg-white dark:bg-slate-900 border-[3px] border-slate-900 dark:border-white shadow-[6px_6px_0px_#000] dark:shadow-[6px_6px_0px_#fff] rounded-xl p-6 flex items-center gap-4">
+                        <div class="w-10 h-10 {{ session('success') ? 'bg-emerald-500' : 'bg-rose-500' }} border-[3px] border-slate-900 dark:border-white rounded-xl flex items-center justify-center text-white shadow-[2px_2px_0px_#000]">
                             @if(session('success'))
                                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
                             @else
@@ -197,26 +285,26 @@
             @endif
 
             @if(auth()->check() && !auth()->user()->identity_path)
-                <div class="bg-amber-500 text-white px-12 py-3 flex justify-between items-center sticky top-0 z-[55] shadow-lg">
+                <div class="bg-amber-400 text-slate-900 border-b-[3px] border-slate-900 dark:border-white px-12 py-4 flex justify-between items-center sticky top-0 z-[55]">
                     <div class="flex items-center gap-3">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
+                        <svg class="w-6 h-6 text-slate-900" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
                         <p class="text-xs font-black uppercase tracking-widest">Peringatan: Profil Belum Lengkap! Harap unggah kartu identitas (KTM/KTP) untuk membuka akses fitur.</p>
                     </div>
-                    <a href="{{ route('profile') }}" class="px-4 py-1.5 bg-white text-amber-600 rounded-lg text-[10px] font-black uppercase tracking-widest hover:scale-105 transition-all">Lengkapi Sekarang</a>
+                    <a href="{{ route('profile') }}" class="px-4 py-2 bg-white text-slate-900 border-[3px] border-slate-900 rounded-xl text-[10px] font-black uppercase tracking-widest shadow-[3px_3px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] transition-all">Lengkapi Sekarang</a>
                 </div>
             @endif
 
-            <header class="bg-white dark:bg-slate-900 border-b border-gray-200 dark:border-slate-800 h-20 flex items-center justify-between px-6 lg:px-12 sticky top-0 z-50 shrink-0">
+            <header class="bg-white dark:bg-slate-900 border-b-[3px] border-slate-900 dark:border-white h-20 flex items-center justify-between px-6 lg:px-12 sticky top-0 z-50 shrink-0">
                 <div class="flex items-center gap-4">
                     <button @click="mobileMenuOpen = true" class="lg:hidden p-2 text-slate-600 dark:text-slate-400">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                     </button>
-                    <h2 class="text-sm font-bold text-slate-500 uppercase tracking-widest truncate max-w-[150px] md:max-w-none">Panel {{ ucfirst($role) }} | PCM Lab</h2>
+                    <h2 class="text-sm font-black text-slate-900 dark:text-white uppercase tracking-widest truncate max-w-[150px] md:max-w-none">Panel {{ ucfirst($role) }} | PCM Lab</h2>
                 </div>
                 <div class="flex items-center gap-6">
                     <!-- Theme Selector -->
                     <div class="relative" x-data="{ open: false }">
-                        <button @click="open = !open" class="p-2.5 rounded-xl bg-gray-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-gray-200 dark:hover:bg-slate-700 transition-all flex items-center gap-2">
+                        <button @click="open = !open" class="p-2.5 bg-white dark:bg-slate-800 border-[3px] border-slate-900 dark:border-white shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff] rounded-xl text-slate-900 dark:text-white hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-[4px_4px_0px_#000] dark:hover:shadow-[4px_4px_0px_#fff] active:translate-x-[1px] active:translate-y-[1px] transition-all flex items-center gap-2">
                             <template x-if="theme === 'light'">
                                 <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
                             </template>
@@ -230,25 +318,25 @@
                         </button>
                         
                         <div x-show="open" @click.away="open = false" x-cloak 
-                             class="absolute right-0 mt-3 w-48 bg-white dark:bg-slate-900 border border-gray-100 dark:border-slate-800 rounded-2xl shadow-2xl p-2 z-[60] overflow-hidden">
-                            <button @click="theme = 'light'; open = false" class="w-full text-left p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 flex items-center gap-3 transition-all">
+                             class="absolute right-0 mt-3 w-48 bg-white dark:bg-slate-900 border-[3px] border-slate-900 dark:border-white rounded-xl shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] p-2 z-[60] overflow-hidden">
+                            <button @click="theme = 'light'; open = false" class="w-full text-left p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 transition-all">
                                 <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"></path></svg>
-                                <span class="text-xs font-bold">Terang</span>
+                                <span class="text-xs font-black uppercase">Terang</span>
                             </button>
-                            <button @click="theme = 'dark'; open = false" class="w-full text-left p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 flex items-center gap-3 transition-all">
+                            <button @click="theme = 'dark'; open = false" class="w-full text-left p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 transition-all">
                                 <svg class="w-4 h-4 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"></path></svg>
-                                <span class="text-xs font-bold">Gelap</span>
+                                <span class="text-xs font-black uppercase">Gelap</span>
                             </button>
-                            <button @click="theme = 'system'; open = false" class="w-full text-left p-3 rounded-xl hover:bg-gray-50 dark:hover:bg-slate-800 flex items-center gap-3 transition-all border-t border-gray-50 dark:border-slate-800 mt-1 pt-3">
+                            <button @click="theme = 'system'; open = false" class="w-full text-left p-3 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-3 transition-all border-t-[3px] border-slate-900 dark:border-white mt-1 pt-3">
                                 <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                <span class="text-xs font-bold">Default PC</span>
+                                <span class="text-xs font-black uppercase">Default PC</span>
                             </button>
                         </div>
                     </div>
 
-                    <div class="flex items-center gap-3 border-l border-gray-200 dark:border-slate-800 pl-6">
-                        <div class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white shadow-sm" style="background-color: var(--accent-color)">{{ $userName ? substr($userName, 0, 1) : '' }}</div>
-                        <span class="font-bold hidden md:block">{{ $userName }}</span>
+                    <div class="flex items-center gap-3 border-l-[3px] border-slate-900 dark:border-white pl-6">
+                        <div class="w-10 h-10 rounded-xl border-[3px] border-slate-900 dark:border-white flex items-center justify-center font-black text-white shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff]" style="background-color: var(--accent-color)">{{ $userName ? substr($userName, 0, 1) : '' }}</div>
+                        <span class="font-black hidden md:block">{{ $userName }}</span>
                     </div>
                 </div>
             </header>
