@@ -146,13 +146,6 @@
             </tr>
             <tr>
                 <td>4</td>
-                <td><strong>No. Telepon</strong></td>
-                <td><span class="optional">Opsional</span></td>
-                <td>No. Handphone</td>
-                <td>Berupa nomor telepon aktif mahasiswa (contoh: <code>081234567890</code>).</td>
-            </tr>
-            <tr>
-                <td>5</td>
                 <td><strong>Program Studi</strong></td>
                 <td><span class="optional">Opsional</span></td>
                 <td>Nama Prodi</td>
@@ -174,7 +167,6 @@
                 <th>Nama</th>
                 <th>NIM</th>
                 <th>Email</th>
-                <th>No. Telepon</th>
                 <th>Program Studi</th>
             </tr>
         </thead>
@@ -183,14 +175,12 @@
                 <td>Ahmad Fauzi</td>
                 <td>20210001</td>
                 <td>ahmad.fauzi@univ.ac.id</td>
-                <td>081234567890</td>
                 <td>Teknik Informatika</td>
             </tr>
             <tr>
                 <td>Citra Lestari</td>
                 <td>20210002</td>
                 <td>citra.lestari@univ.ac.id</td>
-                <td>089876543210</td>
                 <td>Sistem Informasi</td>
             </tr>
         </tbody>

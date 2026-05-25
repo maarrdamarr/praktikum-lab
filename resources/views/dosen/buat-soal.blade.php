@@ -11,7 +11,7 @@
         topic: 'Modul 01',
         canReply: true,
         canEdit: false,
-        selectedClass: 'Kimia Dasar I - Modul 01',
+        selectedClass: 'Pemrograman Dasar - Modul 01',
         
         editMode: false,
         editId: null,
@@ -42,7 +42,7 @@
             this.topic = q.topik || 'Tidak ada topik';
             this.canReply = q.bisa_melihat_rekap;
             this.canEdit = q.bisa_memperbaiki;
-            this.selectedClass = q.kelas || 'Kimia Dasar I - Modul 01';
+            this.selectedClass = q.kelas || 'Pemrograman Dasar - Modul 01';
             this.activeTab = 'create';
             
             // Scroll to form smoothly
@@ -62,7 +62,7 @@
             this.topic = 'Modul 01';
             this.canReply = true;
             this.canEdit = false;
-            this.selectedClass = 'Kimia Dasar I - Modul 01';
+            this.selectedClass = 'Pemrograman Dasar - Modul 01';
         }
     }" class="max-w-7xl mx-auto space-y-8">
 
@@ -185,9 +185,9 @@
                     <div class="space-y-2">
                         <label class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Mata Kuliah / Modul</label>
                         <select x-model="selectedClass" class="w-full neu-input px-5 py-3 text-xs font-black text-slate-900 dark:text-white">
-                            <option>Kimia Dasar I - Modul 01</option>
-                            <option>Kimia Dasar I - Modul 02</option>
-                            <option>Kimia Dasar I - Modul 03</option>
+                            <option>Pemrograman Dasar - Modul 01</option>
+                            <option>Pemrograman Dasar - Modul 02</option>
+                            <option>Pemrograman Dasar - Modul 03</option>
                         </select>
                     </div>
 

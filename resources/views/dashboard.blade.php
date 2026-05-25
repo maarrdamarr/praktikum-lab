@@ -28,7 +28,7 @@
     <!-- Metrics Section -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
         @if($role == 'praktikan')
-            <x-metric-card color="blue" title="Modul Berjalan" value="Modul 04" sub="Spektroskopi UV-Vis" />
+            <x-metric-card color="blue" title="Modul Berjalan" value="Modul 04" sub="Pemrograman Web Lanjut" />
             <x-metric-card color="indigo" title="Progres Praktikum" value="65%" sub="5 dari 8 Modul" />
             <x-metric-card color="emerald" title="Indeks Prestasi" value="3.82" sub="Predikat: Sangat Baik" />
             <x-metric-card color="rose" title="Sisa Sesi" value="3 Sesi" sub="Hingga UAS" />
@@ -36,7 +36,7 @@
             <x-metric-card color="emerald" title="Review Menunggu" value="18" sub="Laporan Praktikan" />
             <x-metric-card color="blue" title="Total Bimbingan" value="42" sub="Mahasiswa Aktif" />
             <x-metric-card color="amber" title="Jam Terbang" value="128h" sub="Semester Ini" />
-            <x-metric-card color="rose" title="Deadline Nilai" value="2 Hari" sub="Sesi Spektroskopi" />
+            <x-metric-card color="rose" title="Deadline Nilai" value="2 Hari" sub="Sesi Pemrograman Web" />
         @elseif($role == 'admin')
             <x-metric-card color="blue" title="Okupansi Lab" value="82%" sub="Kapasitas Ruangan" />
             <x-metric-card color="emerald" title="Asisten Aktif" value="12/15" sub="On-Duty" />
@@ -54,6 +54,18 @@
         <!-- Main Activity Area -->
         <div class="lg:col-span-2 space-y-12">
             @if($role == 'praktikan')
+                @if(session('has_finished_pretest'))
+                    <div class="p-8 mb-12 border-[3px] border-emerald-500 bg-emerald-50 dark:bg-emerald-900/20 rounded-2xl shadow-[6px_6px_0px_#10b981] flex flex-col md:flex-row justify-between items-center gap-6">
+                        <div>
+                            <h3 class="text-xl font-black uppercase tracking-widest text-emerald-700 dark:text-emerald-400 mb-2">Pre-Test Selesai!</h3>
+                            <p class="text-sm font-bold text-emerald-600 dark:text-emerald-300">Anda telah menyelesaikan Pre-Test praktikum. Silakan unduh bukti kehadiran dan nilai Anda.</p>
+                        </div>
+                        <a href="{{ route('praktikan.pre-test.pdf') }}" class="px-8 py-4 bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest border-[3px] border-slate-900 dark:border-white rounded-xl shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff] hover:translate-x-[-2px] hover:translate-y-[-2px] hover:shadow-[6px_6px_0px_#000] transition-all whitespace-nowrap shrink-0">
+                            Unduh PDF Hasil
+                        </a>
+                    </div>
+                @endif
+
                 <div class="p-10 neu-card relative overflow-hidden">
                     <div class="absolute top-0 right-0 p-8">
                         <span class="px-4 py-2 border-[3px] border-slate-900 dark:border-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff]" style="background-color: var(--accent-color); color: #ffffff">Next Session</span>
@@ -66,8 +78,8 @@
                             <span class="text-[10px] font-black uppercase tracking-widest opacity-80">Mei</span>
                         </div>
                         <div class="flex-1 space-y-2">
-                            <h4 class="text-2xl font-black text-slate-900 dark:text-white">Laboratorium Kimia Dasar</h4>
-                            <p class="text-slate-600 dark:text-slate-400 font-bold italic">"Analisis Kuantitatif Senyawa Organik"</p>
+                            <h4 class="text-2xl font-black text-slate-900 dark:text-white">Laboratorium Komputer Terpadu</h4>
+                            <p class="text-slate-600 dark:text-slate-400 font-bold italic">"Implementasi CRUD pada Framework Laravel"</p>
                             <div class="flex gap-4 pt-4">
                                 <span class="px-4 py-2 bg-gray-50 dark:bg-slate-800 border-[3px] border-slate-900 dark:border-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff]">08:00 - 12:00</span>
                                 <span class="px-4 py-2 bg-gray-50 dark:bg-slate-800 border-[3px] border-slate-900 dark:border-white rounded-xl text-[10px] font-black uppercase tracking-widest shadow-[3px_3px_0px_#000] dark:shadow-[3px_3px_0px_#fff]">Meja 04</span>
@@ -89,13 +101,13 @@
                             ],
                             'asisten' => [
                                 ['Ahmad Fauzi mengunggah laporan baru', '15 menit yang lalu', 'info'],
-                                ['Sesi Spektroskopi selesai', '1 jam yang lalu', 'success'],
+                                ['Sesi Pemrograman Web selesai', '1 jam yang lalu', 'success'],
                                 ['Review Laporan Kelompok A tertunda', '3 jam yang lalu', 'warning']
                             ],
                             'admin' => [
                                 ['Maintenance Lab Komputer B selesai', '1 jam yang lalu', 'success'],
                                 ['Jadwal baru dirilis untuk Juni', '4 jam yang lalu', 'info'],
-                                ['Peringatan suhu Lab Kimia tinggi', '6 jam yang lalu', 'warning']
+                                ['Peringatan suhu Lab Komputer A tinggi', '6 jam yang lalu', 'warning']
                             ],
                             'dosen' => [
                                 ['Rata-rata nilai kelas A meningkat', '2 jam yang lalu', 'success'],
@@ -151,6 +163,9 @@
                 <h3 class="text-lg font-black uppercase tracking-widest mb-6 text-slate-900 dark:text-white">Butuh Bantuan?</h3>
                 <p class="text-xs text-slate-600 dark:text-slate-400 font-bold leading-relaxed mb-6">Hubungi administrator laboratorium jika Anda mengalami kendala teknis atau memiliki pertanyaan terkait jadwal.</p>
                 <div class="space-y-4">
+                    @if($role == 'admin')
+                        <a href="{{ route('admin.laporan-lab.pdf') }}" class="block p-4 text-center text-[10px] font-black uppercase tracking-widest border-[3px] border-slate-900 dark:border-white rounded-xl bg-blue-500 text-white hover:translate-x-[-2px] hover:translate-y-[-2px] shadow-[4px_4px_0px_#000] transition-all">Unduh Laporan Lab (PDF)</a>
+                    @endif
                     <a href="#" class="block p-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white text-center text-[10px] font-black uppercase tracking-widest neu-btn">Pusat Bantuan</a>
                     <a href="#" class="block p-4 text-center text-[10px] font-black uppercase tracking-widest neu-btn text-white" style="background-color: var(--accent-color)">Kirim Tiket</a>
                 </div>

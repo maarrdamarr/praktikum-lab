@@ -359,6 +359,27 @@ class AdminController extends Controller
         return back()->with('success', 'Data akun mahasiswa berhasil diperbarui.');
     }
 
+    public function downloadLaporanPdf()
+    {
+        // Ambil data statistik dari database (menggunakan dummy tambahan untuk metrik komprehensif seperti di referensi gambar)
+        $totalPenggunaanLab = 1850;
+        $rataPengguna = 124;
+        $penggunaAktif = \App\Models\User::count();
+        $jadwalHarian = \App\Models\Jadwal::with('ruangan')->take(10)->get();
+
+        $pdf = \Barryvdh\DomPDF\Facade\Pdf::loadView('pdf.laporan-penggunaan-lab', compact(
+            'totalPenggunaanLab', 
+            'rataPengguna', 
+            'penggunaAktif',
+            'jadwalHarian'
+        ));
+
+        // Menggunakan ukuran A4 portrait
+        $pdf->setPaper('A4', 'portrait');
+
+        return $pdf->download('Laporan_Penggunaan_Lab_PCM.pdf');
+    }
+
     public function destroyPengguna($id)
     {
         $user = User::findOrFail($id);

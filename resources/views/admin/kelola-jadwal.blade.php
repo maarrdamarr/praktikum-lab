@@ -73,7 +73,7 @@
                     {{-- Mata Kuliah --}}
                     <div class="space-y-2">
                         <label class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest block">Mata Kuliah</label>
-                        <input type="text" name="mata_kuliah" value="{{ old('mata_kuliah') }}" placeholder="Kimia Dasar I, …"
+                        <input type="text" name="mata_kuliah" value="{{ old('mata_kuliah') }}" placeholder="Pemrograman Dasar, …"
                                class="w-full neu-input px-4 py-3.5 text-sm font-bold">
                     </div>
 

@@ -2,7 +2,7 @@
     <div class="space-y-10">
         <div class="p-8 bg-blue-100 dark:bg-blue-950 border-[3px] border-slate-900 dark:border-white rounded-xl shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff]">
             <div class="flex justify-between items-center flex-wrap gap-4 mb-6">
-                <h3 class="text-lg font-black uppercase tracking-wider text-slate-900 dark:text-white">Modul 04: Spektroskopi UV-Vis</h3>
+                <h3 class="text-lg font-black uppercase tracking-wider text-slate-900 dark:text-white">Modul 04: Pemrograman Web Lanjut</h3>
                 <div class="px-4 py-2 bg-rose-450 text-slate-900 border-[3px] border-slate-900 dark:border-white rounded-xl text-xs font-black uppercase tracking-widest shadow-[2px_2px_0px_#000] dark:shadow-[2px_2px_0px_#fff] animate-pulse">09:54 Sisa Waktu</div>
             </div>
             <p class="text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed">Jawablah pertanyaan berikut dengan teliti. Anda hanya memiliki satu kesempatan untuk mengirimkan jawaban.</p>
@@ -11,7 +11,7 @@
         <form action="{{ route('praktikan.pre-test.store') }}" method="POST" class="space-y-12">
             @csrf
             @foreach([
-                'Apa prinsip utama dari hukum Lambert-Beer dalam spektroskopi?',
+                'Apa prinsip utama dari konsep MVC dalam Laravel?',
                 'Sebutkan komponen utama dari alat spektrofotometer yang Anda gunakan.',
                 'Mengapa larutan blanko diperlukan dalam pengukuran absorbansi?'
             ] as $i => $q)

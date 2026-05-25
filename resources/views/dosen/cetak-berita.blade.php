@@ -11,7 +11,7 @@
                 @csrf
                 <select class="w-full neu-input px-6 py-4 text-sm font-black text-slate-900 dark:text-white">
                     <option>Pilih Sesi Praktikum...</option>
-                    <option>Sesi A - Spektroskopi (12 Mei)</option>
+                    <option>Sesi A - Pemrograman Web (12 Mei)</option>
                     <option>Sesi B - Titrasi (14 Mei)</option>
                 </select>
                 <button type="submit" class="w-full py-5 bg-[var(--accent-color)] text-white font-black rounded-xl uppercase tracking-widest flex items-center justify-center gap-3 neu-btn">
@@ -24,7 +24,7 @@
         <div class="p-8 bg-gray-50 dark:bg-slate-800 rounded-xl border-[3px] border-slate-900 dark:border-white shadow-[4px_4px_0px_#000] dark:shadow-[4px_4px_0px_#fff]">
             <h3 class="text-lg font-black uppercase mb-6 text-slate-900 dark:text-white">Arsip Berita Acara</h3>
             <div class="space-y-4">
-                @foreach(['BA_Spektroskopi_120526.pdf', 'BA_KimiaOrganik_100526.pdf'] as $file)
+                @foreach(['BA_Pemrograman Web_120526.pdf', 'BA_InformatikaOrganik_100526.pdf'] as $file)
                     <div class="p-4 bg-white dark:bg-slate-900 rounded-xl border-[3px] border-slate-900 dark:border-white flex justify-between items-center">
                         <span class="text-xs font-black text-slate-650 dark:text-slate-400">{{ $file }}</span>
                         <button class="text-slate-900 dark:text-white border-2 border-slate-900 dark:border-white px-3 py-1.5 rounded-lg bg-white dark:bg-slate-800 hover:bg-[var(--accent-color)] hover:text-white shadow-[2px_2px_0px_#000] text-[10px] font-black uppercase tracking-widest transition-all cursor-pointer">Download</button>

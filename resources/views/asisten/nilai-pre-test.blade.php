@@ -9,7 +9,7 @@
                         </div>
                         <div>
                             <h4 class="font-black text-slate-900 dark:text-white uppercase">{{ $name }}</h4>
-                            <p class="text-[10px] text-slate-500 dark:text-slate-400 font-black uppercase tracking-widest">Modul: Spektroskopi UV-Vis</p>
+                            <p class="text-[10px] text-slate-500 dark:text-slate-400 font-black uppercase tracking-widest">Modul: Pemrograman Web Lanjut</p>
                         </div>
                     </div>
                     <div class="px-4 py-2 border-2 border-slate-900 dark:border-white bg-amber-400 text-slate-900 rounded-lg text-[10px] font-black uppercase tracking-widest shadow-[2px_2px_0px_#000]">Belum Dinilai</div>

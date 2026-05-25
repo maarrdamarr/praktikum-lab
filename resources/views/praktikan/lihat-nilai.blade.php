@@ -10,7 +10,7 @@
                 </tr>
             </thead>
             <tbody class="text-sm">
-                @foreach(['Kimia Organik 1', 'Destilasi Bertingkat', 'Uji Kualitas Air'] as $modul)
+                @foreach(['Basis Data', 'Struktur Data', 'Jaringan Komputer'] as $modul)
                     <tr class="border-b-[3px] border-slate-900 dark:border-white last:border-0 hover:bg-gray-50 dark:hover:bg-slate-800 transition-all">
                         <td class="px-8 py-6 font-black text-slate-900 dark:text-white">{{ $modul }}</td>
                         <td class="px-8 py-6 text-center text-cyan-600 dark:text-cyan-400 font-black">85</td>

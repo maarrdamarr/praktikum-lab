@@ -41,7 +41,7 @@
                         <div class="lg:col-span-2 space-y-2">
                             <label class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest block">Nama Ruangan *</label>
                             <input type="text" name="nama" value="{{ old('nama') }}" required
-                                   placeholder="Lab Kimia Dasar, Lab Komputer A, …"
+                                   placeholder="Lab Komputer Dasar, Lab Komputer A, …"
                                    class="w-full neu-input px-4 py-3.5 text-sm font-bold">
                         </div>
                         <div class="space-y-2">

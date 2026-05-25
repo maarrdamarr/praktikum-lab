@@ -123,7 +123,7 @@
                     </div>
                     <div class="space-y-2">
                         <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest block">Mata Kuliah</label>
-                        <input type="text" name="mata_kuliah" placeholder="Kimia Dasar I …" class="w-full neu-input px-4 py-3 text-sm font-bold">
+                        <input type="text" name="mata_kuliah" placeholder="Pemrograman Dasar …" class="w-full neu-input px-4 py-3 text-sm font-bold">
                     </div>
                     <div class="space-y-2">
                         <label class="text-[10px] font-black text-slate-500 uppercase tracking-widest block">Kelas</label>

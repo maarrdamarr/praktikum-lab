@@ -2,7 +2,7 @@
     <div class="space-y-10">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             @foreach([
-                ['Senin', '08:00 - 12:00', 'Lab Kimia Dasar', '12 Sisa'],
+                ['Senin', '08:00 - 12:00', 'Lab Komputer Dasar', '12 Sisa'],
                 ['Selasa', '13:00 - 17:00', 'Lab Fisika Atom', '5 Sisa'],
                 ['Kamis', '08:00 - 12:00', 'Lab Komputer A', 'Full']
             ] as $jadwal)

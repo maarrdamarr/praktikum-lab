@@ -53,6 +53,7 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/pilih-jadwal', [PraktikanController::class, 'storeJadwal'])->name('pilih-jadwal.store');
         Route::get('/pre-test', [PraktikanController::class, 'preTest'])->name('pre-test');
         Route::post('/pre-test', [PraktikanController::class, 'storePreTest'])->name('pre-test.store');
+        Route::get('/pre-test/pdf', [PraktikanController::class, 'downloadPreTestPdf'])->name('pre-test.pdf');
         Route::get('/upload-laporan', [PraktikanController::class, 'uploadLaporan'])->name('upload-laporan');
         Route::post('/upload-laporan', [PraktikanController::class, 'storeLaporan'])->name('upload-laporan.store');
         Route::get('/lihat-nilai', [PraktikanController::class, 'lihatNilai'])->name('lihat-nilai');
@@ -106,6 +107,10 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/kelola-pengguna/export', [AdminController::class, 'exportPengguna'])->name('kelola-pengguna.export');
         Route::get('/kelola-pengguna/export-template-excel', [AdminController::class, 'exportTemplateExcel'])->name('kelola-pengguna.export-template-excel');
         Route::get('/kelola-pengguna/export-template-pdf', [AdminController::class, 'exportTemplatePDF'])->name('kelola-pengguna.export-template-pdf');
+        
+        // Laporan Lab PDF
+        Route::get('/laporan-lab/pdf', [AdminController::class, 'downloadLaporanPdf'])->name('laporan-lab.pdf');
+
         Route::get('/alokasi-asisten', [AdminController::class, 'alokasiAsisten'])->name('alokasi-asisten');
         Route::post('/alokasi-asisten', [AdminController::class, 'storeAlokasi'])->name('alokasi-asisten.store');
         // Distribusi Modul — full CRUD

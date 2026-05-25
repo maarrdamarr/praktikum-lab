@@ -104,7 +104,6 @@
                             <th class="px-8 py-5">Nama Mahasiswa</th>
                             <th class="px-8 py-5">NIM</th>
                             <th class="px-8 py-5">Email</th>
-                            <th class="px-8 py-5">No. Telepon</th>
                             <th class="px-8 py-5">Program Studi</th>
                             <th class="px-8 py-5 text-right">Aksi</th>
                         </tr>
@@ -135,7 +134,6 @@
                                     </td>
                                     <td class="px-8 py-5 font-bold text-slate-900 dark:text-white">{{ $user->nim }}</td>
                                     <td class="px-8 py-5 font-bold text-slate-500 dark:text-slate-400">{{ $user->email }}</td>
-                                    <td class="px-8 py-5 font-bold text-slate-500 dark:text-slate-400">{{ $user->phone ?? '-' }}</td>
                                     <td class="px-8 py-5">
                                         <span class="px-2.5 py-1 text-[9px] font-black uppercase tracking-wider rounded-lg border-2 border-slate-900 dark:border-white shadow-[1.5px_1.5px_0px_#000] dark:shadow-[1.5px_1.5px_0px_#fff]
                                             {{ $user->prodi == 'Teknik Informatika' ? 'bg-rose-100 text-rose-700' : ($user->prodi == 'Sistem Informasi' ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700') }}">
@@ -183,13 +181,9 @@
                                                                 <label class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest block">NIM</label>
                                                                 <input type="text" name="nim" value="{{ $user->nim }}" required class="w-full neu-input px-4 py-3 text-sm font-bold">
                                                             </div>
-                                                            <div class="space-y-2">
+                                                            <div class="space-y-2 md:col-span-2">
                                                                 <label class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest block">Email Institusi</label>
                                                                 <input type="email" name="email" value="{{ $user->email }}" required class="w-full neu-input px-4 py-3 text-sm font-bold">
-                                                            </div>
-                                                            <div class="space-y-2">
-                                                                <label class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest block">No. Telepon</label>
-                                                                <input type="text" name="phone" value="{{ $user->phone }}" class="w-full neu-input px-4 py-3 text-sm font-bold">
                                                             </div>
                                                             <div class="space-y-2 md:col-span-2">
                                                                 <label class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest block">Program Studi</label>
@@ -251,12 +245,7 @@
                         <input type="email" name="email" required placeholder="ahmad@univ.ac.id"
                                class="w-full neu-input px-5 py-3.5 text-sm font-bold">
                     </div>
-                    <div class="space-y-2">
-                        <label class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest block ml-1">No. Telepon</label>
-                        <input type="text" name="phone" placeholder="081234567890"
-                               class="w-full neu-input px-5 py-3.5 text-sm font-bold">
-                    </div>
-                    <div class="space-y-2 lg:col-span-2">
+                    <div class="space-y-2 lg:col-span-3">
                         <label class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest block ml-1">Program Studi *</label>
                         <select name="prodi" class="w-full neu-input px-5 py-3.5 text-sm font-bold text-slate-900 dark:text-white">
                             <option value="Teknik Informatika">Teknik Informatika</option>
