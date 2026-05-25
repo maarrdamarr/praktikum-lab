@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Jadwal;
+use App\Models\Ruangan;
 use Illuminate\Http\Request;
 use PhpOffice\PhpSpreadsheet\Spreadsheet;
 use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
@@ -276,5 +278,80 @@ class DosenController extends Controller
     public function generatePDF(Request $request)
     {
         return back()->with('success', 'Dokumen Berita Acara (PDF) sedang dikirim ke antrean cetak.');
+    }
+
+    // ─────────────────────────────────────────
+    //  JADWAL LAB (Dosen)
+    // ─────────────────────────────────────────
+
+    public function jadwalLab()
+    {
+        $dosenId  = auth()->id();
+        $ruangans = Ruangan::where('status', 'aktif')->with(['jadwals' => function ($q) {
+            $q->orderBy('hari')->orderBy('jam_mulai');
+        }])->get();
+
+        // Jadwal milik dosen ini
+        $jadwalSaya = Jadwal::with(['ruangan'])
+            ->where('dosen_id', $dosenId)
+            ->orderBy('hari')->orderBy('jam_mulai')
+            ->get();
+
+        // Jadwal kosong (belum ada dosen) dan ruangan tersedia
+        $jadwalKosong = Jadwal::with(['ruangan'])
+            ->whereNull('dosen_id')
+            ->whereNotNull('ruangan_id')
+            ->orderBy('hari')->orderBy('jam_mulai')
+            ->get();
+
+        $hariList = ['Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu', 'Minggu'];
+
+        return view('dosen.jadwal-lab', compact('ruangans', 'jadwalSaya', 'jadwalKosong', 'hariList'));
+    }
+
+    public function ambilJadwal(Request $request, $id)
+    {
+        $jadwal = Jadwal::with('ruangan')->findOrFail($id);
+
+        if ($jadwal->dosen_id) {
+            return back()->with('error', 'Jadwal ini sudah diambil oleh dosen lain.');
+        }
+
+        $jadwal->update([
+            'dosen_id'    => auth()->id(),
+            'nomor_surat' => Jadwal::generateNomorSurat(),
+        ]);
+
+        return back()->with('success', 'Jadwal berhasil diambil! Anda dapat mengunduh surat penggunaan lab.');
+    }
+
+    public function lepasJadwal(Request $request, $id)
+    {
+        $jadwal = Jadwal::findOrFail($id);
+
+        if ($jadwal->dosen_id !== auth()->id()) {
+            return back()->with('error', 'Anda tidak memiliki akses untuk melepas jadwal ini.');
+        }
+
+        $jadwal->update(['dosen_id' => null, 'nomor_surat' => null]);
+
+        return back()->with('success', 'Jadwal berhasil dilepas.');
+    }
+
+    public function cetakSuratPdf($id)
+    {
+        $jadwal = Jadwal::with(['ruangan', 'dosen'])->findOrFail($id);
+
+        // Pastikan hanya dosen pemilik yang bisa cetak
+        if ($jadwal->dosen_id !== auth()->id()) {
+            abort(403, 'Akses ditolak.');
+        }
+
+        // Generate HTML dan kirim sebagai PDF menggunakan browser print
+        $html = view('dosen.surat-lab-pdf', compact('jadwal'))->render();
+
+        return response($html)
+            ->header('Content-Type', 'text/html')
+            ->header('X-Print-On-Load', 'true');
     }
 }

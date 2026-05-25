@@ -6,6 +6,7 @@ use App\Http\Controllers\PraktikanController;
 use App\Http\Controllers\AsistenController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DosenController;
+use App\Http\Controllers\ModulController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -56,6 +57,9 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/upload-laporan', [PraktikanController::class, 'storeLaporan'])->name('upload-laporan.store');
         Route::get('/lihat-nilai', [PraktikanController::class, 'lihatNilai'])->name('lihat-nilai');
         Route::get('/presensi-qr', [PraktikanController::class, 'presensiQR'])->name('presensi-qr');
+        // Modul
+        Route::get('/modul', [ModulController::class, 'index'])->name('modul');
+        Route::get('/modul/{id}/download', [ModulController::class, 'download'])->name('modul.download');
     });
 
     // Role Asisten
@@ -70,23 +74,47 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/input-nilai', [AsistenController::class, 'inputNilai'])->name('input-nilai');
         Route::post('/input-nilai', [AsistenController::class, 'storeNilaiAktivitas'])->name('input-nilai.store');
         Route::get('/monitoring-kelompok', [AsistenController::class, 'monitoringKelompok'])->name('monitoring-kelompok');
+        // Modul
+        Route::get('/modul', [ModulController::class, 'index'])->name('modul');
+        Route::get('/modul/{id}/download', [ModulController::class, 'download'])->name('modul.download');
     });
 
     // Role Admin (Laboran)
     Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
+
+        // Kelola Jadwal — full CRUD
         Route::get('/kelola-jadwal', [AdminController::class, 'kelolaJadwal'])->name('kelola-jadwal');
         Route::post('/kelola-jadwal', [AdminController::class, 'storeJadwal'])->name('kelola-jadwal.store');
-        Route::get('/kelola-pengguna', [AdminController::class, 'kelolaPengguna'])->name('kelola-pengguna');
-        Route::post('/kelola-pengguna', [AdminController::class, 'storePengguna'])->name('kelola-pengguna.store');
-        Route::post('/kelola-pengguna/import', [AdminController::class, 'importPengguna'])->name('kelola-pengguna.import');
-        Route::get('/kelola-pengguna/export', [AdminController::class, 'exportPengguna'])->name('kelola-pengguna.export');
-        Route::get('/alokasi-asisten', [AdminController::class, 'alokasiAsisten'])->name('alokasi-asisten');
-        Route::post('/alokasi-asisten', [AdminController::class, 'storeAlokasi'])->name('alokasi-asisten.store');
-        Route::get('/distribusi-modul', [AdminController::class, 'distribusiModul'])->name('distribusi-modul');
-        Route::post('/distribusi-modul', [AdminController::class, 'storeModul'])->name('distribusi-modul.store');
+        Route::put('/kelola-jadwal/{id}', [AdminController::class, 'updateJadwal'])->name('kelola-jadwal.update');
+        Route::delete('/kelola-jadwal/{id}', [AdminController::class, 'destroyJadwal'])->name('kelola-jadwal.destroy');
+
+        // Kelola Ruangan — full CRUD + Detail
         Route::get('/kelola-ruangan', [AdminController::class, 'kelolaRuangan'])->name('kelola-ruangan');
         Route::post('/kelola-ruangan', [AdminController::class, 'storeRuangan'])->name('kelola-ruangan.store');
+        Route::put('/kelola-ruangan/{id}', [AdminController::class, 'updateRuangan'])->name('kelola-ruangan.update');
+        Route::delete('/kelola-ruangan/{id}', [AdminController::class, 'destroyRuangan'])->name('kelola-ruangan.destroy');
+        Route::get('/kelola-ruangan/{id}/detail', [AdminController::class, 'detailRuangan'])->name('kelola-ruangan.detail');
+        Route::post('/kelola-ruangan/{id}/atur-jadwal', [AdminController::class, 'aturJadwalRuangan'])->name('kelola-ruangan.atur-jadwal');
+
+        // Other admin pages
+        Route::get('/kelola-pengguna', [AdminController::class, 'kelolaPengguna'])->name('kelola-pengguna');
+        Route::post('/kelola-pengguna', [AdminController::class, 'storePengguna'])->name('kelola-pengguna.store');
+        Route::put('/kelola-pengguna/{id}', [AdminController::class, 'updatePengguna'])->name('kelola-pengguna.update');
+        Route::delete('/kelola-pengguna/{id}', [AdminController::class, 'destroyPengguna'])->name('kelola-pengguna.destroy');
+        Route::post('/kelola-pengguna/import', [AdminController::class, 'importPengguna'])->name('kelola-pengguna.import');
+        Route::get('/kelola-pengguna/export', [AdminController::class, 'exportPengguna'])->name('kelola-pengguna.export');
+        Route::get('/kelola-pengguna/export-template-excel', [AdminController::class, 'exportTemplateExcel'])->name('kelola-pengguna.export-template-excel');
+        Route::get('/kelola-pengguna/export-template-pdf', [AdminController::class, 'exportTemplatePDF'])->name('kelola-pengguna.export-template-pdf');
+        Route::get('/alokasi-asisten', [AdminController::class, 'alokasiAsisten'])->name('alokasi-asisten');
+        Route::post('/alokasi-asisten', [AdminController::class, 'storeAlokasi'])->name('alokasi-asisten.store');
+        // Distribusi Modul — full CRUD
+        Route::get('/distribusi-modul', [ModulController::class, 'adminIndex'])->name('distribusi-modul');
+        Route::post('/distribusi-modul', [ModulController::class, 'store'])->name('distribusi-modul.store');
+        Route::put('/distribusi-modul/{id}', [ModulController::class, 'update'])->name('distribusi-modul.update');
+        Route::delete('/distribusi-modul/{id}', [ModulController::class, 'destroy'])->name('distribusi-modul.destroy');
+        Route::patch('/distribusi-modul/{id}/toggle', [ModulController::class, 'toggleStatus'])->name('distribusi-modul.toggle');
+        Route::get('/distribusi-modul/{id}/download', [ModulController::class, 'download'])->name('distribusi-modul.download');
         Route::get('/deteksi-clash', [AdminController::class, 'deteksiClash'])->name('deteksi-clash');
     });
 
@@ -105,6 +133,15 @@ Route::middleware(['auth'])->group(function () {
         Route::post('/nilai-responsi', [DosenController::class, 'storeNilaiResponsi'])->name('nilai-responsi.store');
         Route::get('/cetak-berita', [DosenController::class, 'cetakBerita'])->name('cetak-berita');
         Route::post('/cetak-berita', [DosenController::class, 'generatePDF'])->name('cetak-berita.pdf');
+
+        // Jadwal dosen — ambil jadwal & cetak surat
+        Route::get('/jadwal-lab', [DosenController::class, 'jadwalLab'])->name('jadwal-lab');
+        Route::post('/jadwal-lab/{id}/ambil', [DosenController::class, 'ambilJadwal'])->name('jadwal-lab.ambil');
+        Route::delete('/jadwal-lab/{id}/lepas', [DosenController::class, 'lepasJadwal'])->name('jadwal-lab.lepas');
+        Route::get('/jadwal-lab/{id}/surat-pdf', [DosenController::class, 'cetakSuratPdf'])->name('jadwal-lab.surat-pdf');
+        // Modul
+        Route::get('/modul', [ModulController::class, 'index'])->name('modul');
+        Route::get('/modul/{id}/download', [ModulController::class, 'download'])->name('modul.download');
     });
 
 });

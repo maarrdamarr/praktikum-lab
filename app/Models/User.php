@@ -13,6 +13,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
+        'nim',
         'password',
         'role',
         'phone',
@@ -31,5 +32,11 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+
+    // Relasi untuk Asisten: Jadwal yang dialokasikan
+    public function jadwals()
+    {
+        return $this->belongsToMany(Jadwal::class, 'asisten_jadwal');
     }
 }

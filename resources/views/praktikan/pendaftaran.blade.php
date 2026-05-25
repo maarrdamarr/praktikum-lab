@@ -13,9 +13,9 @@
                     <div class="space-y-2">
                         <label class="text-[10px] font-black text-slate-500 dark:text-slate-400 uppercase tracking-widest ml-1">Program Studi</label>
                         <select name="prodi" class="w-full neu-input px-6 py-4 text-sm font-black">
-                            <option>Teknik Kimia</option>
-                            <option>Teknik Fisika</option>
-                            <option>Teknik Elektro</option>
+                            <option>Teknik Informatika</option>
+                            <option>Sistem Informasi</option>
+                            <option>Pendidikan Teknologi Informasi</option>
                         </select>
                     </div>
                 </div>
